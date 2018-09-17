@@ -67,10 +67,38 @@ enemy의 policy는 고정되어 있다고 가정합니다.
 
 
 ### [Local, Individual Rewards]
+그러나, (1) 식의 reward function을 사용하는 것은 team collaboration 이 local collaboration이 모여서 이루어진 것이라는 점을 배제 시킵니다.  
+그러므로, agent들이 team collaboration을 이끌어 낼 수 있는 개개의 objective function을 갖게 하는 것이 필요합니다.  
+이를 위해서, (1) 식을 agent들의 local reward 식으로 변경합니다.  
+이 식은 agent의 다른 agent들과의 협업에 대한 공언도를 측정하여 반영 합니다.  
+![image](https://user-images.githubusercontent.com/40893452/45605118-7617a080-ba75-11e8-966f-aa7f91a22cd0.png)  
+각각의 agent i 는 top-K-u(i)와 top-K-e(i)를 유지합니다.  
+top-K 는 현재 상호작용하는 동료 agent들과 적 agent들을 의미합니다.  
+그러므로, 같은 parameter 로써 표현되는 policy function 을 위한 Bellman equation 이 총 N개 생겨납니다.  
 
+![image](https://user-images.githubusercontent.com/40893452/45605118-7617a080-ba75-11e8-966f-aa7f91a22cd0.png)  
 
+(* 식 (3)에서는 agent i 별로 나뉘지 않았으나,식 (5)에서는 Q_i (s, a) 가 됩니다. *)  
 
 ### [Communication w/ Bidirectional Backpropagation]
+비록 (5) 번 식이 signle-agnet 들을 위해서 사용할 수 있지만, team-level collaboration을 위해서는 다소 부족한 메커니즘입니다.  
+그러므로, 이 논문에서는 agent들 사이에 communication을 BiCNet을 통해서 수행합니다.  
+BiCNet은 multiagent actor network와 multiagnet critic network들로 구성되어 있습니다.  
+기본적으로 actor-critic 구조를 따르므로 actor / critic network 가 존재합니다.  
+actor 와 critic network는 모두 bi-directional RNN 구조를 사용합니다.  
+actor networks 는 shared obseravtion 정보 (모든 agent들이 같은 state 를 공유하므로 shared observation 이라 표현) 를 기반으로 각각의 agent들을 위한 action을 반환합니다.  
+
+bi-directional recurrent structure 는 (1) communicatio channel 뿐 아니라 (2) local memory saver 로써도 역할을 수행합니다.  
+각각의 individual agent는 자신의 "internal state"를 recurrent structure내에 유지합니다.  
+뿐만 아니라 협력을 위해서 다른 agent들에게 공유합니다.  
+
+![image](https://user-images.githubusercontent.com/40893452/45605458-0e168980-ba78-11e8-9b3e-a35a3ea41168.png)
+
+이를 위해서, N 개의 unfold RNN structure를 사용하여 모델이 구현됩니다.  
+학습 과정에서의 gradient는 개개의 Q (action-value function) 과 policy function으로 들어갑니다.  
+
+이러한 과정을 수학적으로 다음과 같이 정리될 수 있습니다.  
+1. 
 
 
 
