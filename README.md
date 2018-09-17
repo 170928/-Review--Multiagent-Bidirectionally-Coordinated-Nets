@@ -1,4 +1,5 @@
 # -Review- Multiagent-Bidirectionally-Coordinated-Nets
+> https://www.slideshare.net/KihoSuh/multiagent-bidirectional-coordinated-nets-for-learning-to-play-starcraft-combat-games
 
 ### [Abstract]
 많은 AI application들은 협력 (collaborative) 작업을 위해서 다중 agent들이 필요합니다.  
