@@ -107,9 +107,15 @@ bi-directional recurrent structure 는 (1) communicatio channel 뿐 아니라 (2
 
 ### [Multi agent Deterministic PG Theorem]
 N agent들은 policy parameter ![image](https://user-images.githubusercontent.com/40893452/45606319-335ac600-ba7f-11e8-94c3-95b532937ac8.png) 로 표현되는 policy를 가집니다.  
-이때, discounted state distribution 과 objective function이 주어지면, policy gradient는 다음과 같이 계산될 수 있습니다.  
+이때, discounted state distribution 과 objective function이 주어지면, policy gradient는 다음과 같이 계산될 수 있습니다.   
+![image](https://user-images.githubusercontent.com/40893452/45609222-eaf8d380-ba91-11e8-8794-44b2ed4e11ee.png)  
 
-### [Experiments]
+이때, 충분한 exploration을 위해서 "Ornstein-Uhlenbeck" 을 actor network의 output에 "noise"로써 더하여 exploration을 수행합니다.  
+이때, action-value ![image](https://user-images.githubusercontent.com/40893452/45609267-26939d80-ba92-11e8-9ee6-c91e99c1a295.png) 를 사용하기 위해서 critic을 사용합니다.  
+critic의 training에는 "sum of square loss"를 objective function으로써 Q-Network를 학습시킵니다.  
+> 이 부분에 대해서는 일반적인 actor-critic이 사용됩니다.  
+
+![image](https://user-images.githubusercontent.com/40893452/45609338-81c59000-ba92-11e8-8b19-ca39da78f40e.png)
 
 
 
