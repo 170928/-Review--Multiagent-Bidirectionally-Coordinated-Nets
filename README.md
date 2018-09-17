@@ -98,9 +98,15 @@ bi-directional recurrent structure 는 (1) communicatio channel 뿐 아니라 (2
 학습 과정에서의 gradient는 개개의 Q (action-value function) 과 policy function으로 들어갑니다.  
 
 이러한 과정을 수학적으로 다음과 같이 정리될 수 있습니다.  
-1. 
+1. single agent i 의 objective function은 다음과 같이 정의됩니다.  
+![image](https://user-images.githubusercontent.com/40893452/45605976-343e2880-ba7c-11e8-8968-c2dace5e3dea.png)   
+2. ![image](https://user-images.githubusercontent.com/40893452/45606039-cf370280-ba7c-11e8-9953-184a241b5de1.png)는 transition T set 을 이루는 policy ![image](https://user-images.githubusercontent.com/40893452/45606059-f097ee80-ba7c-11e8-9e44-06dbe0a7af32.png)에서의 state distribution 입니다.   
+3. state distribution은 다음과 같이 표현됩니다.   
+![image](https://user-images.githubusercontent.com/40893452/45606090-33f25d00-ba7d-11e8-87ea-04e34f70f0b6.png)  
 
-
+### [Multi agent Deterministic PG Theorem]
+N agent들은 policy parameter ![image](https://user-images.githubusercontent.com/40893452/45606319-335ac600-ba7f-11e8-94c3-95b532937ac8.png) 로 표현되는 policy를 가집니다.  
+이때, discounted state distribution 과 objective function이 주어지면, policy gradient는 다음과 같이 계산될 수 있습니다.  
 
 ### [Experiments]
 
