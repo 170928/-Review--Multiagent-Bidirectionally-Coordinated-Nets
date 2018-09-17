@@ -77,7 +77,8 @@ enemy의 policy는 고정되어 있다고 가정합니다.
 top-K 는 현재 상호작용하는 동료 agent들과 적 agent들을 의미합니다.  
 그러므로, 같은 parameter 로써 표현되는 policy function 을 위한 Bellman equation 이 총 N개 생겨납니다.  
 
-![image](https://user-images.githubusercontent.com/40893452/45605118-7617a080-ba75-11e8-966f-aa7f91a22cd0.png)  
+![image](https://user-images.githubusercontent.com/40893452/45609656-c9005080-ba93-11e8-9340-affd3d4be73b.png)
+  
 
 (* 식 (3)에서는 agent i 별로 나뉘지 않았으나,식 (5)에서는 Q_i (s, a) 가 됩니다. *)  
 
